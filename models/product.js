@@ -25,9 +25,7 @@ const Product = db.define('product', {
         field: 'updated_at',
     },
 }, {
-    //freeze table name
-    schema: 'public',
-    freezeTableName: true,
+
     timestamps: true,
     underscored: true
 });
