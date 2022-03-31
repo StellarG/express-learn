@@ -29,7 +29,10 @@ product.getProductById = async(req, res) => {
 product.createProduct = async(req, res) => {
     try {
         const product = await model.create(req.body);
-        res.status(201).json(product);
+        res.status(201).json({
+            message: "Data telah ditambahkan",
+            data: product
+        });
     } catch (error) {
         res.status(500).json({
             message: error.message
@@ -42,7 +45,10 @@ product.updateProduct = async(req, res) => {
     try {
         const product = await model.findByPk(req.params.id);
         await product.update(req.body);
-        res.status(200).json(product);
+        res.status(200).json({
+            message: "Data telah diupdate",
+            data: product
+        });
     } catch (error) {
         res.status(500).json({
             message: error.message
@@ -55,7 +61,9 @@ product.deleteProduct = async(req, res) => {
     try {
         const product = await model.findByPk(req.params.id);
         await product.destroy();
-        res.status(200).json(product);
+        res.status(200).json({
+            message: "Data telah dihapus"
+        });
     } catch (error) {
         res.status(500).json({
             message: error.message
